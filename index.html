@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<!-- Build: Supplied Logo Watermark V12 — curated accents with the provided Farkle wordmark -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Farkle &mdash; Supplied Logo Watermark V12</title>
+<meta name="description" content="Farkle against a perfectly solved opponent. Ten thousand to win, hot dice, one last round.">
+<meta name="theme-color" content="#0E2429">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Dice Duel">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="icons/icon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="icons/icon-16.png">
+<link rel="apple-touch-icon" href="icons/icon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<div class="stage"><div class="cabinet" id="cab"><div class="felt">
+
+  <div class="splash" id="splash">
+    <img src="assets/images/img001.webp" alt="Farkle">
+  </div>
+
+  <button class="burger" id="burger" aria-label="Menu"><i></i><i></i><i></i></button>
+  <div class="volctl" id="volctl">
+    <button id="volUp" aria-label="Volume up"><svg viewBox="0 0 20 20"><path d="M10 3v14M4 10h12" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg></button>
+    <button id="volMute" aria-label="Mute"><svg viewBox="0 0 20 20"><path d="M3 8v4h3l4 3V5L6 8H3z" fill="currentColor"/><path id="volWaves" d="M13 7c1.2 1 1.2 5 0 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" fill="none"/></svg></button>
+    <button id="volDown" aria-label="Volume down"><svg viewBox="0 0 20 20"><path d="M4 10h12" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg></button>
+  </div>
+  <div class="board" id="board">
+    <div class="scores" id="portraitZone">
+      <div class="side you" id="youSide">
+        <div class="avatarBlock" id="youAvatarBlock">
+          <div class="avatarWrap"><img class="avatar" id="youAvatar" alt=""></div>
+          <div class="nameplate" id="youlabel">You</div>
+        </div>
+        <div class="num" id="pnum">0</div>
+      </div>
+      <div class="mid"><div class="vsbadgeWrap"><span class="gold">VS</span></div></div>
+      <div class="side sol" id="solSide">
+        <div class="avatarBlock" id="solAvatarBlock">
+          <div class="avatarWrap"><img class="avatar" id="solAvatar" alt=""></div>
+          <div class="nameplate" id="sollabel">Computer</div>
+        </div>
+        <div class="num" id="anum">0</div>
+      </div>
+    </div>
+    <div class="barwrap"><div class="bar"><div class="fill" id="ofill"></div></div><div class="spark" id="ospark"></div></div>
+    <div class="pcts">
+      <div class="pct gold" id="oyou">50.9%</div>
+      <div class="barlabel" id="ocap">Live Win Chance</div>
+      <div class="pct cyan" id="osol">49.1%</div>
+    </div>
+    <div class="chasepanel" id="chasepanel">
+      <div class="chaseRow" id="chaseRow">
+        <div class="chaseAvatarSide"><div class="chaseAvatarWrap"><img class="chaseAvatarImg" id="chaseAvatarImg" alt=""></div></div>
+        <div class="chaseTextSide">
+          <div class="chaselabel" id="chaseLabel">YOU NEED</div>
+          <div class="chasenum gold" id="chaseNum">350</div>
+          <div class="chaseprob">
+            <div class="chaseprobfill" id="chaseProbFill"></div>
+            <div class="chaseprobtext" id="chaseProbText">42% chance</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="totalbox frame">
+    <i class="tick"></i><i>Turn Total</i><b class="gold" id="ttv">0</b><i class="tick"></i>
+  </div>
+
+  <div class="arena" id="arena">
+    <div class="arenaWatermark" aria-hidden="true"><img src="assets/images/svg01.svg" alt=""></div>
+    <div class="arenaNotice" id="arenaNotice" aria-live="polite">
+      <div class="arenaNoticeMain" id="arenaNoticeMain"></div>
+      <div class="arenaNoticeSub" id="arenaNoticeSub"></div>
+    </div>
+    <div class="shelf" id="shelf"></div>
+    <div class="flash" id="flash">
+        <div class="ftxt gold" id="ftxt">Farkle</div>
+        <div class="fsub" id="fsub"></div>
+        <button class="hbtn" id="hbtn">Continue</button>
+      </div>
+  </div>
+
+  <div class="controls" id="ctl"></div>
+  <div class="advice" id="advice"></div>
+
+  <div class="htp" id="oppPicker">
+    <button class="htpX" id="oppClose">&times;</button>
+    <div class="htpTrack" id="oppTrack"></div>
+    <div class="htpDots" id="oppDots"></div>
+    <div class="htpNav">
+      <button class="htpBtn pale" id="oppPrev">Back</button>
+      <button class="htpBtn" id="oppChoose">Choose</button>
+      <button class="htpBtn pale" id="oppNext">Next</button>
+    </div>
+  </div>
+
+  <div class="winScreen" id="winScreen">
+    <div class="winRays"></div>
+    <div class="confettiBack" id="confettiBack"></div>
+    <div class="winCard">
+      <div class="winHeroWrap" id="winHeroWrap" style="display:none">
+        <div class="winHeroImgFrame" id="winHeroImgFrame"><img class="winHeroImg" id="winHeroImg" alt=""></div>
+        <img class="winBannerImg" id="winBannerImg" alt="">
+        <svg class="winBannerText" viewBox="0 0 1222 281" aria-hidden="true">
+          <defs><path id="winBannerPath" d="M 243.5 118 Q 611 184 978.5 118"/></defs>
+          <text id="winBannerText" fill="#07162b" stroke="#02080f" stroke-opacity="0.32" stroke-width="2.4" paint-order="stroke fill" font-family="Impact, Haettenschweiler, 'Arial Narrow Bold', 'Arial Narrow', sans-serif" font-weight="900" font-size="112" letter-spacing="1" text-anchor="middle"><textPath id="winBannerTextPath" href="#winBannerPath" startOffset="50%">YOU WIN</textPath></text>
+          <text id="winBannerMeasure" x="-5000" y="-5000" opacity="0" pointer-events="none" font-family="Impact, Haettenschweiler, 'Arial Narrow Bold', 'Arial Narrow', sans-serif" font-weight="900" font-size="100" letter-spacing="1">YOU WIN</text>
+        </svg>
+      </div>
+      <div class="winPortraitBox" id="winPortraitBox" style="display:none"><img class="winPortraitImg" id="winPortraitImg" alt=""></div>
+      <div class="winRibbonWrap" id="winRibbonWrap" style="display:none"><div class="winRibbon" id="winRibbonText">WINS!</div></div>
+      <div class="winScoreLine" id="winScoreLine"><b>0</b> <span class="vs">TO</span> <b>0</b></div>
+      <div class="winBtns">
+        <button class="mbtn" id="winPlayAgainBtn" style="margin-top:0">Play Again</button>
+        <button class="mbtn pale" id="winMainMenuBtn" style="margin-top:0">Main Menu</button>
+      </div>
+    </div>
+    <div class="confettiFront" id="confettiFront"></div>
+  </div>
+
+  <div class="awScreen" id="awScreen">
+    <button class="awClose" id="awClose" aria-label="Close">&times;</button>
+    <div class="awTitle gold" id="awTitle">Choose Your Avatar</div>
+    <div class="awPeel" id="awPeel">
+      <span class="awPeelName" id="awPeelName">You</span>
+      <button class="awPeelBtn" id="awPeelBtn">Change Name</button>
+    </div>
+    <div class="awColorSection">
+      <div class="msec">Background Color</div>
+      <div class="colorSwatchRow" id="youColorSwatches"></div>
+    </div>
+    <div class="awStage" id="awStage">
+      <div class="awSelectDock"><button class="awBtn awSelect" id="awSelectBtn">Select This Character</button></div>
+      <div class="awWheel" id="awWheel"></div>
+      <div class="awHub">
+        <button class="awBtn awFilter" id="awGenderBtn"><small>Gender</small>All</button>
+        <button class="awBtn awPremium" id="awPremiumBtn"><small>Type</small>All</button>
+        <button class="awBtn awFilter" id="awAgeBtn"><small>Age</small>All</button>
+      </div>
+    </div>
+    <div class="awFooter">
+      <button class="rbtn" id="awUploadBtn">Upload Photos</button>
+      <button class="rbtn" id="awNoneBtn">Use No Avatar</button>
+    </div>
+  </div>
+
+  <div id="kbMode" aria-label="Dice Dual game">
+    <div class="kbStatus" id="kbStatus">ROLL THE DIE</div>
+    <div class="kbStage">
+      <div class="kbLane"><div class="kbDieTray" id="kbDieTray"></div></div>
+
+      <div class="kbOppArea">
+        <button class="kbRollBtn" id="kbAiRoll" type="button" disabled><span class="kbFlip180">ROLL DICE</span></button>
+        <div class="kbBoard3" id="kbAiBoard3"></div>
+      </div>
+
+      <div class="kbDividerRow" id="kbDividerRow">
+        <div class="kbLogoLine"><img class="kbLogo" src="assets/images/svg02.svg" alt="Dice Dual"></div>
+        <div class="kbScoreRow" id="kbScoreRow">
+          <span class="kbSYou" id="kbYouScore">0</span>
+          <span class="kbSOpp" id="kbAiScore">0</span>
+        </div>
+      </div>
+
+      <div class="kbYouArea">
+        <div class="kbBoard3" id="kbYouBoard3"></div>
+        <button class="kbRollBtn" id="kbRoll" type="button">ROLL DICE</button>
+      </div>
+    </div>
+    <div id="kbEnd" class="kbEnd" hidden><div class="kbEndCard"><div id="kbEndTitle">GAME OVER</div><div id="kbEndScore"></div><button id="kbAgain" type="button">NEW GAME</button></div></div>
+  </div>
+
+  <div class="menu" id="kbModeScreen" style="z-index:19">
+    <div class="mhead mhead-hero"><div class="mtitle gold">Dice Dual</div><button class="mclose" id="kbModeScreenClose">&times;</button></div>
+    <button class="mbtn mbtn-hero" id="kbModeSingleBtn">Single Player</button>
+    <button class="mbtn pale mbtn-hero" id="kbModeMultiBtn">Pass &amp; Play</button>
+  </div>
+
+  <div class="menu" id="menu">
+    <div class="mhead mhead-hero"><div class="mtitle gold">Main Menu</div></div>
+
+    <div class="lockedNote" id="playLockNote" style="display:none">Finish or end this game to change modes.</div>
+    <button class="mbtn mbtn-hero" id="menuNewGame">New Game</button>
+    <button class="mbtn mbtn-hero" id="menuKnuckle">Dice Dual</button>
+    <button class="mbtn pale mbtn-hero" id="menuHowToPlay">How To Play</button>
+
+    <div class="lockedNote" id="avatarLockNote" style="display:none">Finish or end this game to change your avatar or name.</div>
+    <div class="awPreviewRow" id="openAvatarWheelBtn">
+      <img class="awPreviewImg" id="awPreviewImg" alt="">
+      <div class="awPreviewMeta">
+        <div class="awPreviewName" id="awPreviewName">You</div>
+      </div>
+    </div>
+    <div class="pfpRow" id="pfpRow" style="display:none"></div>
+    <input type="file" id="pfpUpload" accept="image/*" multiple style="display:none">
+    <button class="rbtn" id="pfpUploadBtn" style="display:none">Upload A Photo</button>
+    <button class="rbtn" id="pfpClearBtn" style="display:none">Use No Avatar</button>
+
+    <button class="mbtn" id="mAdvanced">Advanced<span class="sub">Dice physics tuning &amp; scoring rules</span></button>
+
+    <div class="msec">This Game</div>
+    <div class="log" id="log"></div>
+  </div>
+
+  <div class="menu" id="advancedScreen" style="z-index:19">
+    <div class="mhead"><div class="mtitle gold">Advanced</div><button class="mclose" id="advancedScreenClose">&times;</button></div>
+
+    <button class="mbtn" id="mPhysics">Dice Animation Physics</button>
+    <button class="mbtn" id="mScoringRules">Scoring Rules</button>
+  </div>
+
+  <div class="menu" id="scoringRulesScreen" style="z-index:19">
+    <div class="mhead"><div class="mtitle gold">Scoring Rules</div><button class="mclose" id="scoringRulesScreenClose">&times;</button></div>
+
+    <div class="msec" style="font-size:10.5px;opacity:.7;margin-top:-4px">Quick Presets</div>
+    <div class="mrow" style="gap:8px">
+      <button class="rbtn" id="presetClassic" style="margin-top:0">Classic</button>
+      <button class="rbtn" id="presetQuick" style="margin-top:0">Quick Game</button>
+      <button class="rbtn" id="presetHighStakes" style="margin-top:0">High Stakes</button>
+    </div>
+    <div class="rules">
+      <div class="rrow"><label>On The Board Minimum</label>
+        <input class="redit" data-path="onBoard" type="number" inputmode="numeric" step="50" min="0"></div>
+      <div class="rrow"><label>Points To Win</label>
+        <input class="redit" data-path="winAt" type="number" inputmode="numeric" step="50" min="500"></div>
+      <table>
+        <tr><th>Combination</th><th>Points</th></tr>
+        <tr><td>Single 1</td><td><input class="redit" data-path="single1" type="number" inputmode="numeric" step="50" min="0"></td></tr>
+        <tr><td>Single 5</td><td><input class="redit" data-path="single5" type="number" inputmode="numeric" step="50" min="0"></td></tr>
+        <tr><td>Three pairs</td><td><input class="redit" data-path="threePair" type="number" inputmode="numeric" step="50" min="0"></td></tr>
+        <tr><td>Two triplets</td><td><input class="redit" data-path="twoTrip" type="number" inputmode="numeric" step="50" min="0"></td></tr>
+        <tr><td>Four of a kind + pair</td><td><input class="redit" data-path="fourPlusPair" type="number" inputmode="numeric" step="50" min="0"></td></tr>
+        <tr><td>Straight 1&ndash;6</td><td><input class="redit" data-path="straight" type="number" inputmode="numeric" step="50" min="0"></td></tr>
+      </table>
+
+      <div class="msec" style="font-size:10.5px;opacity:.7;margin-top:10px">Three Ones</div>
+      <div class="mrow" style="gap:8px">
+        <button class="rbtn modebtn" data-group="ones3Mode" data-value="standard" style="margin-top:0">Standard (1000)</button>
+        <button class="rbtn modebtn" data-group="ones3Mode" data-value="alt" style="margin-top:0">Alternate (300)</button>
+      </div>
+      <div class="mrow">
+        <div><div class="t">Four/Five/Six Ones Escalate</div>
+          <div class="d">Regardless of the 4/5/6-of-a-kind setting below, ones keep doubling from their own three-of-a-kind value on their own -- the classic default's 1000/2000/4000/8000 pattern, kept as its own special case instead of following whatever the general rule below is set to for every other face.</div></div>
+        <div class="sw" id="swOnesEscalate"></div>
+      </div>
+
+      <div class="msec" style="font-size:10.5px;opacity:.7;margin-top:10px">4/5/6 Of A Kind</div>
+      <div class="mrow" style="gap:8px">
+        <button class="rbtn modebtn" data-group="noakMode" data-value="custom" style="margin-top:0">Custom</button>
+        <button class="rbtn modebtn" data-group="noakMode" data-value="flatUniform" style="margin-top:0">Flat</button>
+        <button class="rbtn modebtn" data-group="noakMode" data-value="doubling" style="margin-top:0">Doubling (&times;2 Each)</button>
+      </div>
+      <div id="noakFlatRow">
+        <div class="rrow"><label>4 Of A Kind (any face)</label>
+          <input class="redit" data-path="noakFlat4" type="number" inputmode="numeric" step="50" min="0"></div>
+        <div class="rrow"><label>5 Of A Kind (any face)</label>
+          <input class="redit" data-path="noakFlat5" type="number" inputmode="numeric" step="50" min="0"></div>
+        <div class="rrow"><label>6 Of A Kind (any face)</label>
+          <input class="redit" data-path="noakFlat6" type="number" inputmode="numeric" step="50" min="0"></div>
+      </div>
+
+      <div class="msec" style="font-size:10.5px;opacity:.7;margin-top:10px">Four Of A Kind + Pair</div>
+      <div class="mrow" style="gap:8px">
+        <button class="rbtn modebtn" data-group="fourPlusPairMode" data-value="flat" style="margin-top:0">Flat Number</button>
+        <button class="rbtn modebtn" data-group="fourPlusPairMode" data-value="formula" style="margin-top:0">4-of-a-Kind + Bonus</button>
+      </div>
+      <div class="rrow" id="fppBonusRow" style="display:none"><label>Pair Bonus</label>
+        <input class="redit" data-path="fourPlusPairBonus" type="number" inputmode="numeric" step="50" min="0"></div>
+
+      <table>
+        <tr><th>Of a kind</th><th>3</th><th>4</th><th>5</th><th>6</th></tr>
+        <tr><td>Ones</td>
+          <td><input class="redit" data-path="noak.1.3" type="number" inputmode="numeric" step="50" min="0"></td>
+          <td><input class="redit" data-path="noak.1.4" type="number" inputmode="numeric" step="50" min="0"></td>
+          <td><input class="redit" data-path="noak.1.5" type="number" inputmode="numeric" step="50" min="0"></td>
+          <td><input class="redit" data-path="noak.1.6" type="number" inputmode="numeric" step="50" min="0"></td></tr>
+        <tr><td>Twos</td>
+          <td><input class="redit" data-path="noak.2.3" type="number" inputmode="numeric" step="50" min="0"></td>
+          <td><input class="redit" data-path="noak.2.4" type="number" inputmode="numeric" step="50" min="0"></td>
+          <td><input class="redit" data-path="noak.2.5" type="number" inputmode="numeric" step="50" min="0"></td>
+          <td><input class="redit" data-path="noak.2.6" type="number" inputmode="numeric" step="50" min="0"></td></tr>
+        <tr><td>Threes</td>
+          <td><input class="redit" data-path="noak.3.3" type="number" inputmode="numeric" step="50" min="0"></td>
+          <td><input class="redit" data-path="noak.3.4" type="number" inputmode="numeric" step="50" min="0"></td>
+          <td><input class="redit" data-path="noak.3.5" type="number" inputmode="numeric" step="50" min="0"></td>
+          <td><input class="redit" data-path="noak.3.6" type="number" inputmode="numeric" step="50" min="0"></td></tr>
+        <tr><td>Fours</td>
+          <td><input class="redit" data-path="noak.4.3" type="number" inputmode="numeric" step="50" min="0"></td>
+          <td><input class="redit" data-path="noak.4.4" type="number" inputmode="numeric" step="50" min="0"></td>
+          <td><input class="redit" data-path="noak.4.5" type="number" inputmode="numeric" step="50" min="0"></td>
+          <td><input class="redit" data-path="noak.4.6" type="number" inputmode="numeric" step="50" min="0"></td></tr>
+        <tr><td>Fives</td>
+          <td><input class="redit" data-path="noak.5.3" type="number" inputmode="numeric" step="50" min="0"></td>
+          <td><input class="redit" data-path="noak.5.4" type="number" inputmode="numeric" step="50" min="0"></td>
+          <td><input class="redit" data-path="noak.5.5" type="number" inputmode="numeric" step="50" min="0"></td>
+          <td><input class="redit" data-path="noak.5.6" type="number" inputmode="numeric" step="50" min="0"></td></tr>
+        <tr><td>Sixes</td>
+          <td><input class="redit" data-path="noak.6.3" type="number" inputmode="numeric" step="50" min="0"></td>
+          <td><input class="redit" data-path="noak.6.4" type="number" inputmode="numeric" step="50" min="0"></td>
+          <td><input class="redit" data-path="noak.6.5" type="number" inputmode="numeric" step="50" min="0"></td>
+          <td><input class="redit" data-path="noak.6.6" type="number" inputmode="numeric" step="50" min="0"></td></tr>
+      </table>
+      <button class="rbtn" id="rReset">Reset To Default</button>
+      <div class="rnote" id="rnote"></div>
+      <ul>
+        <li>Bright dice can be kept. Dull dice score nothing on their own.</li>
+        <li>Score all six dice and you re-roll all six, keeping your total.</li>
+        <li>First past the target triggers the last round &mdash; the other player gets one turn to beat that score, and no reply.</li>
+      </ul>
+    </div>
+  </div>
+  </div>
+
+  <div class="menu" id="newGameScreen" style="z-index:19">
+    <div class="mhead mhead-hero"><div class="mtitle gold">New Game</div><button class="mclose" id="newGameScreenClose">&times;</button></div>
+    <button class="mbtn mbtn-hero" id="menuVsComputer">Single Player</button>
+    <button class="mbtn pale mbtn-hero" id="menuPassPlay">Pass &amp; Play</button>
+    <button class="mbtn pale mbtn-hero" id="menuAiVsAi">Demo Mode</button>
+
+    <div class="msec">Player 2 (Pass &amp; Play)</div>
+    <div class="awPreviewRow" id="openAvatarWheelBtnP2">
+      <img class="awPreviewImg" id="awPreviewImgP2" alt="">
+      <div class="awPreviewMeta">
+        <div class="awPreviewName" id="awPreviewNameP2">Player 2</div>
+      </div>
+    </div>
+
+    <div class="msec">Game Settings</div>
+    <div class="mrow">
+      <div><div class="t">Show Stats</div>
+        <div class="d">Win percentages and farkle odds. The bar itself stays either way.</div></div>
+      <div class="sw on" id="swStats"></div>
+    </div>
+    <div class="mrow">
+      <div><div class="t">Optimal Play Hints</div>
+        <div class="d">Rings the dice to keep, then the button to press.</div></div>
+      <div class="sw" id="swHints"></div>
+    </div>
+    <div class="mrow">
+      <div><div class="t">Automatic Grouping</div>
+        <div class="d">Click one die and its whole scoring set jumps up together. Off = click exactly what you tap, one die at a time.</div></div>
+      <div class="sw on" id="swAutoGroup"></div>
+    </div>
+    <div class="mrow">
+      <div><div class="t">Show Point Values</div>
+        <div class="d">A small bracket under each group showing what it's worth.</div></div>
+      <div class="sw on" id="swBrackets"></div>
+    </div>
+  </div>
+
+  <div class="igmBackdrop" id="igmBackdrop"></div>
+  <div class="igm" id="inGameMenu">
+    <div class="mhead"><div class="mtitle gold">Menu</div><button class="mclose" id="igmClose">&times;</button></div>
+
+    <div class="mrow">
+      <div class="t">Show Stats</div>
+      <div class="sw on" id="swStatsGame"></div>
+    </div>
+    <div class="mrow">
+      <div class="t">Optimal Play Hints</div>
+      <div class="sw" id="swHintsGame"></div>
+    </div>
+    <div class="mrow">
+      <div class="t">Automatic Grouping</div>
+      <div class="sw on" id="swAutoGroupGame"></div>
+    </div>
+    <div class="mrow">
+      <div class="t">Show Point Values</div>
+      <div class="sw on" id="swBracketsGame"></div>
+    </div>
+    <div class="mrow">
+      <div class="t">Shade Invalid Dice</div>
+      <div class="sw on" id="swShadeInvalidGame"></div>
+    </div>
+    <div class="mrow">
+      <div class="t">Cheat Mode <span style="opacity:.6">(testing)</span></div>
+      <div class="sw" id="swCheatGame"></div>
+    </div>
+
+    <button class="mbtn pale" id="menuHowToPlayGame">How To Play</button>
+    <button class="mbtn pale" id="menuEndGame">End Game</button>
+    <div id="endGameConfirm" style="display:none">
+      <div class="lockedNote" style="margin-top:10px">This match will be lost. End it anyway?</div>
+      <button class="mbtn" id="endGameYes">Yes, End Game</button>
+      <button class="mbtn pale" id="endGameNo">Keep Playing</button>
+    </div>
+  </div>
+
+  <div class="htp" id="howToPlay">
+    <button class="htpX" id="htpClose">&times;</button>
+    <div class="htpTrack" id="htpTrack">
+      <div class="htpSlide">
+        <div class="htpIcon">🎯</div>
+        <div class="htpHead">Objective</div>
+        <div class="htpText">Score points by rolling and banking before your luck runs out.<br><br>First to the target score triggers the <b>last round</b> — whoever's ahead when it ends wins.</div>
+      </div>
+      <div class="htpSlide">
+        <div class="htpIcon">🎲</div>
+        <div class="htpHead">Roll The Dice</div>
+        <div class="htpText">Roll all six. Every die that can score <b>glows bright</b> — dull dice score nothing on their own.<br><br>Tap the bright ones you want to keep.</div>
+      </div>
+      <div class="htpSlide">
+        <div class="htpIcon">⚖️</div>
+        <div class="htpHead">Bank Or Push</div>
+        <div class="htpText"><b>Bank</b> — lock in your points for the turn and pass the dice along.<br><br><b>Roll Again</b> — re-roll what's left, adding to your total, but risking it all.</div>
+      </div>
+      <div class="htpSlide">
+        <div class="htpIcon">💥</div>
+        <div class="htpHead">Farkle</div>
+        <div class="htpText">Roll nothing that scores and you <b>farkle</b> — every point from that turn is lost.<br><br>Your total from earlier turns is always safe.</div>
+      </div>
+      <div class="htpSlide">
+        <div class="htpIcon">🔥</div>
+        <div class="htpHead">Hot Dice</div>
+        <div class="htpText">Score with <b>all six dice</b> in one turn and you get to roll all six again — same turn total, brand new roll.<br><br>It can keep happening again and again.</div>
+      </div>
+      <div class="htpSlide">
+        <div class="htpIcon">📊</div>
+        <div class="htpHead">Getting On The Board</div>
+        <div class="htpText">Your very first turn needs to clear a minimum score before any points count toward your total.<br><br>Check <b>Scoring Rules</b> in the Advanced menu for the exact number — it's fully adjustable.</div>
+      </div>
+    </div>
+    <div class="htpDots" id="htpDots"></div>
+    <div class="htpNav">
+      <button class="htpBtn pale" id="htpPrev">Back</button>
+      <button class="htpBtn" id="htpNext">Next</button>
+    </div>
+  </div>
+
+  <div class="menu" id="physMenu">
+    <div class="physSticky">
+      <div class="mhead"><div class="mtitle gold">Dice Physics</div><button class="mclose" id="physClose">&times;</button></div>
+      <div class="physPreviewWrap">
+        <div class="physPreviewHead">
+          <span>Preview Dice</span>
+          <div class="physCountBtns" id="physCountBtns"></div>
+        </div>
+        <div class="physPreviewArena" id="physPreviewArena"></div>
+      </div>
+    </div>
+
+    <div class="msec">Natural Roll</div>
+    <div class="physrow">
+      <div class="physhead"><label for="physLaunch">Launch Speed</label><output class="physval" id="physLaunchVal" for="physLaunch">1,920</output></div>
+      <input class="physrange" id="physLaunch" type="range" min="1200" max="2800" step="20" value="1920" style="--pct:45%" aria-describedby="physLaunchDetail">
+      <div class="physends"><span>Fast</span><span>Very fast</span></div>
+      <div class="physStaggerRow">
+        <label for="physLaunchStagger">Stagger</label>
+        <input class="physStaggerRange" id="physLaunchStagger" type="range" min="0" max="100" step="5" value="20" style="--pct:20%">
+        <output class="physStaggerVal" id="physLaunchStaggerVal">±20%</output>
+      </div>
+      <div class="physdetail" id="physLaunchDetail"></div>
+    </div>
+    <div class="physrow">
+      <div class="physhead"><label for="physDecelRamp">Deceleration Build</label><output class="physval" id="physDecelRampVal" for="physDecelRamp">1.05 s</output></div>
+      <input class="physrange" id="physDecelRamp" type="range" min="300" max="3000" step="50" value="1050" style="--pct:27.78%" aria-describedby="physDecelRampDetail">
+      <div class="physends"><span>Builds quickly</span><span>Builds slowly</span></div>
+      <div class="physStaggerRow">
+        <label for="physDecelStagger">Stagger</label>
+        <input class="physStaggerRange" id="physDecelStagger" type="range" min="0" max="100" step="5" value="10" style="--pct:10%">
+        <output class="physStaggerVal" id="physDecelStaggerVal">±10%</output>
+      </div>
+      <div class="physdetail" id="physDecelRampDetail"></div>
+    </div>
+    <div class="physrow">
+      <div class="physhead"><label for="physFullDrag">Full Natural Drag</label><output class="physval" id="physFullDragVal" for="physFullDrag">7.0%</output></div>
+      <input class="physrange" id="physFullDrag" type="range" min="30" max="120" step="1" value="70" style="--pct:44%" aria-describedby="physFullDragDetail">
+      <div class="physends"><span>Gentle</span><span>Strong</span></div>
+      <div class="physStaggerRow">
+        <label for="physDragStagger">Stagger</label>
+        <input class="physStaggerRange" id="physDragStagger" type="range" min="0" max="100" step="5" value="35" style="--pct:35%">
+        <output class="physStaggerVal" id="physDragStaggerVal">±35%</output>
+      </div>
+      <div class="physdetail" id="physFullDragDetail"></div>
+    </div>
+
+    <div class="msec">Magnetic Settling</div>
+    <div class="physrow">
+      <div class="physhead"><label for="physMagnetStart">Magnet Starts At</label><output class="physval" id="physMagnetStartVal" for="physMagnetStart">280 px/s</output></div>
+      <input class="physrange" id="physMagnetStart" type="range" min="50" max="700" step="10" value="280" style="--pct:35%" aria-describedby="physMagnetStartDetail">
+      <div class="physends"><span>Near stop</span><span>While rolling</span></div>
+      <div class="physStaggerRow">
+        <label for="physMagnetStartStagger">Stagger</label>
+        <input class="physStaggerRange" id="physMagnetStartStagger" type="range" min="0" max="100" step="5" value="35" style="--pct:35%">
+        <output class="physStaggerVal" id="physMagnetStartStaggerVal">±35%</output>
+      </div>
+      <div class="physdetail" id="physMagnetStartDetail"></div>
+    </div>
+    <div class="physrow">
+      <div class="physhead"><label for="physMagnetRamp">Full Engagement Time</label><output class="physval" id="physMagnetRampVal" for="physMagnetRamp">1.25 s</output></div>
+      <input class="physrange" id="physMagnetRamp" type="range" min="100" max="2000" step="50" value="1250" style="--pct:60.53%" aria-describedby="physMagnetRampDetail">
+      <div class="physends"><span>Quick</span><span>Gradual</span></div>
+      <div class="physStaggerRow">
+        <label for="physMagnetRampStagger">Stagger</label>
+        <input class="physStaggerRange" id="physMagnetRampStagger" type="range" min="0" max="100" step="5" value="40" style="--pct:40%">
+        <output class="physStaggerVal" id="physMagnetRampStaggerVal">±40%</output>
+      </div>
+      <div class="physdetail" id="physMagnetRampDetail"></div>
+    </div>
+    <div class="physrow">
+      <div class="physhead"><label for="physMagnetForce">Full Magnetic Force</label><output class="physval" id="physMagnetForceVal" for="physMagnetForce">5,500</output></div>
+      <input class="physrange" id="physMagnetForce" type="range" min="500" max="9000" step="100" value="5500" style="--pct:58.82%" aria-describedby="physMagnetForceDetail">
+      <div class="physends"><span>Subtle</span><span>Strong</span></div>
+      <div class="physStaggerRow">
+        <label for="physMagnetForceStagger">Stagger</label>
+        <input class="physStaggerRange" id="physMagnetForceStagger" type="range" min="0" max="100" step="5" value="20" style="--pct:20%">
+        <output class="physStaggerVal" id="physMagnetForceStaggerVal">±20%</output>
+      </div>
+      <div class="physdetail" id="physMagnetForceDetail"></div>
+    </div>
+
+    <div class="msec">Final Snap</div>
+    <div class="physrow">
+      <div class="physhead"><label for="physSnapMs">Snap Duration</label><output class="physval" id="physSnapMsVal" for="physSnapMs">0.43 s</output></div>
+      <input class="physrange" id="physSnapMs" type="range" min="50" max="1500" step="25" value="425" style="--pct:25.86%" aria-describedby="physSnapMsDetail">
+      <div class="physends"><span>Instant</span><span>Slow</span></div>
+      <div class="physStaggerRow">
+        <label for="physSnapStagger">Stagger</label>
+        <input class="physStaggerRange" id="physSnapStagger" type="range" min="0" max="100" step="5" value="20" style="--pct:20%">
+        <output class="physStaggerVal" id="physSnapStaggerVal">±20%</output>
+      </div>
+      <div class="physdetail" id="physSnapMsDetail"></div>
+    </div>
+
+    <div class="msec">Result Reveal</div>
+    <div class="physrow">
+      <div class="physhead"><label for="physHighlightDelay">Highlight Delay</label><output class="physval" id="physHighlightDelayVal" for="physHighlightDelay">0.20 s</output></div>
+      <input class="physrange" id="physHighlightDelay" type="range" min="0" max="2000" step="50" value="200" style="--pct:10%" aria-describedby="physHighlightDelayDetail">
+      <div class="physends"><span>Instant</span><span>Long pause</span></div>
+      <div class="physdetail" id="physHighlightDelayDetail"></div>
+    </div>
+
+    <div class="msec">Save / Load Settings</div>
+    <div class="physrow">
+      <div class="rnote">Copy this text to save your settings, or paste in text you saved earlier and press Apply.</div>
+      <textarea id="physExportBox" class="physExportBox" rows="4" spellcheck="false"></textarea>
+      <button class="rbtn" id="physCopyBtn">Copy To Clipboard</button>
+      <button class="rbtn" id="physApplyBtn">Apply Pasted Settings</button>
+      <button class="rbtn" id="physResetBtn">Reset Physics To Default</button>
+      <div class="rnote" id="physExportNote">&nbsp;</div>
+    </div>
+  </div>
+
+
+
+</div></div></div>
+
+
+
+<script src="js/app-part1.js" defer></script>
+<script src="js/app-part2.js" defer></script>
+<script src="js/app-part3.js" defer></script>
+
+<script src="js/app-part4.js" defer></script>
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('service-worker.js').catch(err => {
+        console.warn('Service worker registration failed:', err);
+      });
+    });
+  }
+</script>
+</body>
+</html>
